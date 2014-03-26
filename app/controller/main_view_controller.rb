@@ -32,6 +32,13 @@ class MainViewController < UIViewController
     @session.addOutput @output
     @output.metadataObjectTypes = [ AVMetadataObjectTypeEAN13Code ]
 
+    @label = UILabel.alloc.initWithFrame(CGRectZero)
+    @label.text = "00000000000000000"
+    @label.backgroundColor = UIColor.whiteColor.colorWithAlphaComponent(0.5)
+    @label.sizeToFit
+    @label.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2)
+    self.view.addSubview @label
+
     @session.startRunning
     NSLog "session running: #{@session.running?}"
     true
@@ -49,8 +56,9 @@ class MainViewController < UIViewController
 
           action = lambda do
             runLoop = NSRunLoop.currentRunLoop
-
-            BW::HTTP.post("http://10.0.1.6:5000/books", payload: {isbn: $last_bar_code}) do |r|
+            @label.text = $last_bar_code
+            BW::HTTP.post("https://www.bookshare.io/books", payload: {isbn: $last_bar_code, token: "xX46qno10MkJW3895175mu8up54XXz3dAnO5VGwe"}) do |r|
+              @label.text = "STORED"
               NSLog("Fetched Google!")
             end
 
