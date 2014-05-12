@@ -1,6 +1,6 @@
 # Bookshare for iOS
 
-This is an admin tool for [bookshare.io]— it allows you to scan barcodes and have them sent to the bookshare.io API for processing. Right now it's in RubyMotion but I hated using RubyMotion so I will rewrite in ObjC eventually. Works. Kind of. There are show-stopping bugs.
+This is an admin tool for [bookshare.io](http://bookshare.io)— it allows you to scan barcodes and have them sent to the bookshare.io API for processing. Right now it's in RubyMotion but I hated using RubyMotion so I will rewrite in ObjC eventually. Works. Kind of. There are show-stopping bugs.
 
 ### MIT License
 
